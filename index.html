@@ -1,10 +1,597 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Test</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Naree — Pattern Vali</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#090909;
+  color:#f3eee6;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+/* NAV */
+
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:72px;
+  padding:0 6%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  z-index:10;
+  background:linear-gradient(#090909,transparent);
+}
+
+.logo{
+  font-size:13px;
+  letter-spacing:4px;
+}
+
+.menu{
+  display:flex;
+  gap:28px;
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#b9b3aa;
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  padding:100px 7%;
+  background:
+    radial-gradient(circle at 75% 45%,#554638 0,transparent 30%),
+    linear-gradient(120deg,#080808 30%,#17120f);
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:48vw;
+  height:78vh;
+  right:5%;
+  top:14%;
+  background:
+    radial-gradient(ellipse at center,#92795f,transparent 58%),
+    linear-gradient(145deg,#29211b,#0b0b0b);
+  opacity:.55;
+  transform:rotate(4deg);
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  width:100%;
+}
+
+.kicker{
+  font-size:10px;
+  letter-spacing:5px;
+  color:#a9a197;
+  margin-bottom:28px;
+}
+
+.hero h1{
+  font-size:clamp(70px,13vw,180px);
+  line-height:.78;
+  font-weight:500;
+  letter-spacing:-8px;
+  text-transform:uppercase;
+}
+
+.hero h1 span{
+  display:block;
+  margin-left:12%;
+  font-family:Georgia,serif;
+  font-style:italic;
+  font-weight:400;
+  text-transform:none;
+  letter-spacing:-5px;
+}
+
+.hero-bottom{
+  margin-top:55px;
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  max-width:850px;
+}
+
+.hero-text{
+  max-width:310px;
+  color:#aaa49b;
+  font-size:13px;
+  line-height:1.8;
+}
+
+.button{
+  display:inline-block;
+  padding:16px 24px;
+  border:1px solid #68625b;
+  font-size:10px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
+.watermark{
+  position:absolute;
+  right:-30px;
+  bottom:-15px;
+  font-size:18vw;
+  font-weight:bold;
+  color:rgba(255,255,255,.025);
+  letter-spacing:-12px;
+}
+
+/* BRAND */
+
+.brand{
+  min-height:100vh;
+  position:relative;
+  padding:120px 7%;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+}
+
+.brand.two{
+  background:#110d0b;
+}
+
+.brand-content{
+  position:relative;
+  z-index:2;
+  max-width:650px;
+}
+
+.index{
+  font-size:10px;
+  letter-spacing:4px;
+  color:#77716a;
+  margin-bottom:25px;
+}
+
+.brand h2{
+  font-size:clamp(60px,10vw,135px);
+  line-height:.8;
+  font-weight:400;
+  letter-spacing:-6px;
+}
+
+.brand h2 em{
+  font-family:Georgia,serif;
+}
+
+.brand p{
+  max-width:390px;
+  margin-top:38px;
+  color:#aaa49b;
+  font-size:13px;
+  line-height:1.9;
+}
+
+.brand .button{
+  margin-top:32px;
+}
+
+.visual{
+  position:absolute;
+  width:39%;
+  height:70%;
+  right:8%;
+  background:
+    radial-gradient(ellipse at center,#8d735c,transparent 48%),
+    linear-gradient(145deg,#29221d,#080808);
+  transform:rotate(4deg);
+  opacity:.7;
+}
+
+.two .visual{
+  background:
+    radial-gradient(ellipse at center,#71584a,transparent 48%),
+    linear-gradient(145deg,#261a17,#080808);
+  transform:rotate(-4deg);
+}
+
+/* COLLECTION */
+
+.collection{
+  padding:130px 7%;
+}
+
+.collection-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  margin-bottom:55px;
+}
+
+.collection h2{
+  font-size:clamp(55px,8vw,110px);
+  line-height:.85;
+  font-weight:400;
+  letter-spacing:-5px;
+}
+
+.collection-title p{
+  max-width:270px;
+  color:#888;
+  font-size:12px;
+  line-height:1.7;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.card{
+  background:#151515;
+  overflow:hidden;
+}
+
+.photo{
+  height:360px;
+  background:
+    radial-gradient(circle at 50% 35%,#927963,transparent 35%),
+    linear-gradient(145deg,#29231e,#0b0b0b);
+  transition:.5s;
+}
+
+.card:nth-child(2) .photo{
+  background:
+    radial-gradient(circle at 50% 35%,#777,#222 35%,#090909 70%);
+}
+
+.card:nth-child(3) .photo{
+  background:
+    radial-gradient(circle at 50% 35%,#b29c82,transparent 35%),
+    linear-gradient(145deg,#302a25,#090909);
+}
+
+.card:nth-child(4) .photo{
+  background:
+    radial-gradient(circle at 50% 35%,#70544b,transparent 35%),
+    linear-gradient(145deg,#281918,#080808);
+}
+
+.card:hover .photo{
+  transform:scale(1.04);
+}
+
+.info{
+  padding:17px;
+  display:flex;
+  justify-content:space-between;
+  font-size:11px;
+}
+
+.price{
+  color:#888;
+}
+
+/* EDITORIAL */
+
+.editorial{
+  min-height:85vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:100px 7%;
+  background:
+    radial-gradient(circle,#46392f,transparent 45%),
+    #0a0a0a;
+}
+
+.editorial h2{
+  font-family:Georgia,serif;
+  font-size:clamp(65px,11vw,155px);
+  font-weight:400;
+  line-height:.8;
+}
+
+.editorial p{
+  max-width:450px;
+  margin:35px auto;
+  color:#aaa;
+  font-size:13px;
+  line-height:1.8;
+}
+
+/* FOOTER */
+
+footer{
+  border-top:1px solid #202020;
+  padding:40px 7%;
+  display:flex;
+  justify-content:space-between;
+  color:#666;
+  font-size:10px;
+  letter-spacing:2px;
+}
+
+/* MOBILE */
+
+@media(max-width:750px){
+
+  .menu{
+    display:none;
+  }
+
+  .hero{
+    padding:110px 6% 70px;
+  }
+
+  .hero h1{
+    font-size:68px;
+    letter-spacing:-5px;
+  }
+
+  .hero-bottom{
+    display:block;
+  }
+
+  .button{
+    margin-top:30px;
+  }
+
+  .brand{
+    min-height:900px;
+    padding:110px 6%;
+    align-items:flex-start;
+  }
+
+  .brand h2{
+    font-size:68px;
+  }
+
+  .visual{
+    width:78%;
+    height:48%;
+    right:11%;
+    bottom:5%;
+  }
+
+  .collection{
+    padding:100px 6%;
+  }
+
+  .collection-title{
+    display:block;
+  }
+
+  .collection-title p{
+    margin-top:25px;
+  }
+
+  .grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .photo{
+    height:250px;
+  }
+
+  footer{
+    display:block;
+    line-height:2.5;
+  }
+}
+</style>
 </head>
+
 <body>
-    <h1>MODERN NAREE</h1>
-    <p>Website is working!</p>
+
+<nav>
+  <div class="logo">MN × PV</div>
+
+  <div class="menu">
+    <a href="#modern">Modern Naree</a>
+    <a href="#pattern">Pattern Vali</a>
+    <a href="#collection">Collection</a>
+  </div>
+</nav>
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <div class="kicker">
+      CONTEMPORARY INDIAN FASHION / 2026
+    </div>
+
+    <h1>
+      Modern
+      <span>Naree.</span>
+    </h1>
+
+    <div class="hero-bottom">
+
+      <div class="hero-text">
+        A new expression of Indian fashion —
+        contemporary silhouettes, timeless details
+        and a wardrobe made to move with you.
+      </div>
+
+      <a class="button" href="#modern">
+        Explore Collection →
+      </a>
+
+    </div>
+
+  </div>
+
+  <div class="watermark">NAREE</div>
+
+</section>
+
+
+<section class="brand" id="modern">
+
+  <div class="brand-content">
+
+    <div class="index">01 / MODERN NAREE</div>
+
+    <h2>
+      Modern<br>
+      <em>Naree</em>
+    </h2>
+
+    <p>
+      Contemporary Indian womenswear designed around
+      clean silhouettes, confident details and effortless
+      everyday luxury.
+    </p>
+
+    <a class="button" href="#collection">
+      Discover Modern Naree →
+    </a>
+
+  </div>
+
+  <div class="visual"></div>
+
+</section>
+
+
+<section class="brand two" id="pattern">
+
+  <div class="brand-content">
+
+    <div class="index">02 / PATTERN VALI</div>
+
+    <h2>
+      Pattern<br>
+      <em>Vali</em>
+    </h2>
+
+    <p>
+      Indian patterns, textures and expressive details
+      brought into a contemporary fashion language.
+    </p>
+
+    <a class="button" href="#collection">
+      Discover Pattern Vali →
+    </a>
+
+  </div>
+
+  <div class="visual"></div>
+
+</section>
+
+
+<section class="collection" id="collection">
+
+  <div class="collection-title">
+
+    <h2>
+      New<br>
+      Drops.
+    </h2>
+
+    <p>
+      Selected pieces from the latest collections,
+      presented through a modern editorial lens.
+    </p>
+
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="photo"></div>
+      <div class="info">
+        <span>Midnight Edit</span>
+        <span class="price">₹2,490</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="photo"></div>
+      <div class="info">
+        <span>Monochrome Set</span>
+        <span class="price">₹3,290</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="photo"></div>
+      <div class="info">
+        <span>Ivory Saree</span>
+        <span class="price">₹4,490</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="photo"></div>
+      <div class="info">
+        <span>Velvet Night</span>
+        <span class="price">₹3,890</span>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="editorial">
+
+  <div>
+
+    <h2>
+      Dress<br>
+      Different.
+    </h2>
+
+    <p>
+      Not just clothing. A point of view.
+      Discover a new expression of Indian fashion.
+    </p>
+
+    <a class="button" href="#collection">
+      View New Collection →
+    </a>
+
+  </div>
+
+</section>
+
+
+<footer>
+  <span>MODERN NAREE × PATTERN VALI</span>
+  <span>© 2026</span>
+</footer>
+
 </body>
 </html>
