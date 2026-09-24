@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pattern Vali</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:#0a0908;
+color:#f4eee6;
+font-family:Arial,sans-serif;
+}
+
+a{
+color:inherit;
+text-decoration:none;
+}
+
+nav{
+height:70px;
+padding:0 6%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+position:sticky;
+top:0;
+z-index:10;
+background:#0a0908ee;
+border-bottom:1px solid #25211e;
+}
+
+.logo{
+font-size:13px;
+letter-spacing:4px;
+}
+
+.menu{
+display:flex;
+gap:25px;
+font-size:10px;
+letter-spacing:2px;
+text-transform:uppercase;
+color:#aaa;
+}
+
+.hero{
+min-height:88vh;
+padding:90px 7%;
+position:relative;
+overflow:hidden;
+display:flex;
+align-items:center;
+
+background:
+radial-gradient(circle at 75% 40%,#76513d,transparent 32%),
+linear-gradient(120deg,#080706,#1c1511);
+}
+
+.content{
+position:relative;
+z-index:2;
+}
+
+.label{
+font-size:10px;
+letter-spacing:5px;
+color:#968d85;
+margin-bottom:28px;
+}
+
+h1{
+font-family:Georgia,serif;
+font-size:clamp(70px,13vw,170px);
+line-height:.8;
+font-weight:400;
+letter-spacing:-7px;
+}
+
+h1 span{
+display:block;
+margin-left:13%;
+font-family:Arial,sans-serif;
+font-style:normal;
+}
+
+.hero p{
+max-width:390px;
+margin-top:40px;
+color:#aaa;
+font-size:13px;
+line-height:1.9;
+}
+
+.btn{
+display:inline-block;
+margin-top:30px;
+padding:15px 23px;
+border:1px solid #777;
+font-size:10px;
+letter-spacing:3px;
+text-transform:uppercase;
+}
+
+.art{
+position:absolute;
+width:43%;
+height:70%;
+right:8%;
+background:
+radial-gradient(circle,#a8785c,transparent 32%),
+repeating-linear-gradient(
+45deg,#30221b 0,#30221b 12px,
+#15100d 12px,#15100d 24px
+);
+transform:rotate(-4deg);
+opacity:.7;
+}
+
+.mark{
+position:absolute;
+right:-20px;
+bottom:-20px;
+font-size:18vw;
+font-weight:bold;
+color:#ffffff06;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">PATTERN VALI</div>
+
+<div class="menu">
+<a href="#collection">Collection</a>
+<a href="#story">Story</a>
+<a href="index.html">Home</a>
+</div>
+</nav>
+
+<section class="hero">
+
+<div class="content">
+
+<div class="label">
+PATTERN VALI / 2026
+</div>
+
+<h1>
+Pattern
+<span>Vali.</span>
+</h1>
+
+<p>
+Expressive Indian patterns, rich textures
+and contemporary silhouettes for a new
+generation.
+</p>
+
+<a href="#collection" class="btn">
+Explore Patterns →
+</a>
+
+</div>
+
+<div class="art"></div>
+
+<div class="mark">PV</div>
+
+</section>
+<section class="collection" id="collection">
+
+<div class="head">
+
+<h2>
+Pattern<br>
+Stories.
+</h2>
+
+<p>
+Prints, textures and colours inspired by
+Indian visual culture and redesigned for
+modern fashion.
+</p>
+
+</div>
+
+<div class="grid">
+
+<div class="card">
+<div class="photo p1"></div>
+
+<div class="info">
+<span>Heritage Print</span>
+<span>₹2,790</span>
+</div>
+</div>
+
+
+<div class="card">
+<div class="photo p2"></div>
+
+<div class="info">
+<span>Earth Pattern</span>
+<span>₹3,190</span>
+</div>
+</div>
+
+
+<div class="card">
+<div class="photo p3"></div>
+
+<div class="info">
+<span>Signature Weave</span>
+<span>₹3,890</span>
+</div>
+</div>
+
+</div>
+
+</section>
+
+
+<style>
+
+.collection{
+padding:120px 7%;
+}
+
+.head{
+display:flex;
+justify-content:space-between;
+align-items:end;
+margin-bottom:50px;
+}
+
+.head h2{
+font-family:Georgia,serif;
+font-size:clamp(55px,8vw,105px);
+font-weight:400;
+line-height:.85;
+}
+
+.head p{
+max-width:300px;
+color:#888;
+font-size:12px;
+line-height:1.8;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:16px;
+}
+
+.card{
+background:#151311;
+overflow:hidden;
+}
+
+.photo{
+height:420px;
+transition:.5s;
+}
+
+.card:hover .photo{
+transform:scale(1.04);
+}
+
+.p1{
+background:
+radial-gradient(circle at 30% 30%,#b88a69,transparent 20%),
+repeating-linear-gradient(
+45deg,
+#33241c 0,#33241c 12px,
+#15100d 12px,#15100d 24px
+);
+}
+
+.p2{
+background:
+radial-gradient(circle at 70% 30%,#947563,transparent 20%),
+repeating-linear-gradient(
+-45deg,
+#29211d 0,#29211d 10px,
+#11100f 10px,#11100f 20px
+);
+}
+
+.p3{
+background:
+radial-gradient(circle at 50% 35%,#b18b70,transparent 22%),
+repeating-linear-gradient(
+90deg,
+#35261f 0,#35261f 15px,
+#17110e 15px,#17110e 30px
+);
+}
+
+.info{
+padding:20px;
+display:flex;
+justify-content:space-between;
+font-size:11px;
+}
+
+.info span:last-child{
+color:#888;
+}
+
+</style>
+<section class="story" id="story">
+
+<div class="story-inner">
+
+<div class="story-label">
+THE PATTERN VALI STORY
+</div>
+
+<h2>
+Wear the
+<span>Pattern.</span>
+</h2>
+
+<p>
+Pattern Vali celebrates Indian patterns,
+textures and expressive details through
+a modern fashion language.
+</p>
+
+<a href="#collection" class="btn">
+Discover The Collection →
+</a>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<div>PATTERN VALI</div>
+
+<div>INDIAN PATTERNS / MODERN FORM</div>
+
+<div>© 2026</div>
+
+</footer>
+
+
+<style>
+
+.story{
+min-height:70vh;
+padding:110px 7%;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+
+background:
+radial-gradient(circle,#4b352a,transparent 48%),
+#090807;
+}
+
+.story-inner{
+max-width:850px;
+}
+
+.story-label{
+font-size:10px;
+letter-spacing:5px;
+color:#888;
+margin-bottom:35px;
+}
+
+.story h2{
+font-family:Georgia,serif;
+font-size:clamp(65px,11vw,150px);
+font-weight:400;
+line-height:.8;
+}
+
+.story h2 span{
+display:block;
+font-style:italic;
+}
+
+.story p{
+max-width:470px;
+margin:40px auto 0;
+color:#aaa;
+font-size:13px;
+line-height:1.9;
+}
+
+footer{
+padding:40px 7%;
+border-top:1px solid #24211f;
+display:flex;
+justify-content:space-between;
+color:#666;
+font-size:9px;
+letter-spacing:2px;
+}
+
+
+@media(max-width:700px){
+
+.menu{
+display:none;
+}
+
+.hero{
+min-height:820px;
+padding:90px 6%;
+align-items:flex-start;
+}
+
+h1{
+font-size:68px;
+letter-spacing:-5px;
+}
+
+.art{
+width:80%;
+height:43%;
+right:10%;
+bottom:5%;
+}
+
+.collection{
+padding:90px 6%;
+}
+
+.head{
+display:block;
+}
+
+.head p{
+margin-top:25px;
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.photo{
+height:390px;
+}
+
+.story{
+min-height:650px;
+padding:90px 6%;
+}
+
+footer{
+display:block;
+line-height:3;
+padding:35px 6%;
+}
+
+}
+
+</style>
+
+</body>
+</html>
