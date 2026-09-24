@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Modern Naree</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#080808;
+  color:#f5f0e8;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+/* NAV */
+
+nav{
+  height:75px;
+  padding:0 6%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(8,8,8,.94);
+  border-bottom:1px solid #222;
+  backdrop-filter:blur(15px);
+}
+
+.logo{
+  font-size:13px;
+  letter-spacing:4px;
+}
+
+.navlinks{
+  display:flex;
+  gap:28px;
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#aaa;
+}
+
+/* HERO */
+
+.hero{
+  min-height:88vh;
+  padding:90px 7%;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+
+  background:
+  radial-gradient(
+    circle at 75% 45%,
+    #66503d 0,
+    transparent 32%
+  ),
+  linear-gradient(
+    125deg,
+    #080808,
+    #19130f
+  );
+}
+
+.hero-content{
+  position:relative;
+  z-index:3;
+}
+
+.kicker{
+  font-size:10px;
+  letter-spacing:5px;
+  color:#999;
+  margin-bottom:28px;
+}
+
+.hero h1{
+  font-size:clamp(70px,13vw,175px);
+  line-height:.78;
+  font-weight:400;
+  letter-spacing:-8px;
+}
+
+.hero h1 span{
+  display:block;
+  margin-left:12%;
+  font-family:Georgia,serif;
+  font-style:italic;
+}
+
+.hero-text{
+  max-width:400px;
+  margin-top:40px;
+  color:#aaa;
+  font-size:13px;
+  line-height:1.9;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:30px;
+  padding:16px 25px;
+  border:1px solid #777;
+  font-size:10px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  transition:.3s;
+}
+
+.btn:hover{
+  background:#f5f0e8;
+  color:#111;
+}
+
+.hero-art{
+  position:absolute;
+  width:43%;
+  height:75%;
+  right:8%;
+  background:
+  radial-gradient(
+    ellipse at center,
+    #a98a6b,
+    transparent 46%
+  ),
+  linear-gradient(
+    145deg,
+    #332820,
+    #080808
+  );
+  transform:rotate(5deg);
+  opacity:.72;
+}
+
+.watermark{
+  position:absolute;
+  right:-25px;
+  bottom:-25px;
+  font-size:19vw;
+  font-weight:bold;
+  color:rgba(255,255,255,.025);
+}
+
+/* COLLECTION */
+
+.collection{
+  padding:120px 7%;
+}
+
+.collection-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  margin-bottom:55px;
+}
+
+.collection-head h2{
+  font-family:Georgia,serif;
+  font-size:clamp(55px,8vw,105px);
+  font-weight:400;
+  line-height:.85;
+}
+
+.collection-head p{
+  max-width:300px;
+  color:#888;
+  font-size:12px;
+  line-height:1.8;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.card{
+  background:#141414;
+  overflow:hidden;
+}
+
+.image{
+  height:430px;
+  transition:.5s;
+}
+
+.card:hover .image{
+  transform:scale(1.04);
+}
+
+.i1{
+  background:
+  radial-gradient(
+    circle at 50% 35%,
+    #a88b70,
+    transparent 32%
+  ),
+  linear-gradient(
+    145deg,
+    #302820,
+    #080808
+  );
+}
+
+.i2{
+  background:
+  radial-gradient(
+    circle at 50% 35%,
+    #aaa59b,
+    transparent 30%
+  ),
+  linear-gradient(
+    145deg,
+    #292929,
+    #080808
+  );
+}
+
+.i3{
+  background:
+  radial-gradient(
+    circle at 50% 35%,
+    #70564b,
+    transparent 32%
+  ),
+  linear-gradient(
+    145deg,
+    #281918,
+    #080808
+  );
+}
+
+.info{
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  font-size:11px;
+}
+
+.price{
+  color:#888;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+  <div class="logo">
+    MODERN NAREE
+  </div>
+
+  <div class="navlinks">
+
+    <a href="#collection">
+      Collection
+    </a>
+
+    <a href="#story">
+      Story
+    </a>
+
+    <a href="index.html">
+      Home
+    </a>
+
+  </div>
+
+</nav>
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <div class="kicker">
+      MODERN NAREE / 2026
+    </div>
+
+    <h1>
+      Modern
+      <span>Naree.</span>
+    </h1>
+
+    <div class="hero-text">
+      Contemporary Indian womenswear created
+      for women who want tradition with a
+      modern point of view.
+    </div>
+
+    <a href="#collection" class="btn">
+      Explore Collection →
+    </a>
+
+  </div>
+
+  <div class="hero-art"></div>
+
+  <div class="watermark">
+    MN
+  </div>
+
+</section>
+
+<section class="collection" id="collection">
+
+  <div class="collection-head">
+
+    <h2>
+      New<br>
+      Collection.
+    </h2>
+
+    <p>
+      Curated silhouettes, refined textures
+      and contemporary Indian details.
+    </p>
+
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+
+      <div class="image i1"></div>
+
+      <div class="info">
+        <span>Midnight Kurta</span>
+        <span class="price">₹2,490</span>
+      </div>
+
+    </div>
+
+    <div class="card">
+
+      <div class="image i2"></div>
+
+      <div class="info">
+        <span>Ivory Edit</span>
+        <span class="price">₹3,290</span>
+      </div>
+
+    </div>
+
+    <div class="card">
+
+      <div class="image i3"></div>
+
+      <div class="info">
+        <span>Velvet Saree</span>
+        <span class="price">₹4,490</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+<section class="story" id="story">
+
+  <div class="story-content">
+
+    <div class="story-label">
+      THE MODERN NAREE STORY
+    </div>
+
+    <h2>
+      Tradition.
+      <span>Reimagined.</span>
+    </h2>
+
+    <p>
+      Modern Naree brings together Indian craftsmanship
+      and contemporary fashion to create pieces that feel
+      timeless, confident and effortless.
+    </p>
+
+    <a href="#collection" class="btn">
+      Shop The Edit →
+    </a>
+
+  </div>
+
+</section>
+
+<footer>
+
+  <div>
+    MODERN NAREE
+  </div>
+
+  <div>
+    CONTEMPORARY INDIAN FASHION
+  </div>
+
+  <div>
+    © 2026
+  </div>
+
+</footer>
+
+<style>
+
+.story{
+  min-height:75vh;
+  padding:120px 7%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+
+  background:
+  radial-gradient(
+    circle,
+    #46382d,
+    transparent 48%
+  ),
+  #090909;
+}
+
+.story-content{
+  max-width:850px;
+}
+
+.story-label{
+  font-size:10px;
+  letter-spacing:5px;
+  color:#888;
+  margin-bottom:35px;
+}
+
+.story h2{
+  font-family:Georgia,serif;
+  font-size:clamp(65px,11vw,150px);
+  font-weight:400;
+  line-height:.8;
+}
+
+.story h2 span{
+  display:block;
+  font-style:italic;
+}
+
+.story p{
+  max-width:480px;
+  margin:40px auto 0;
+  color:#aaa;
+  font-size:13px;
+  line-height:1.9;
+}
+
+footer{
+  padding:40px 7%;
+  border-top:1px solid #222;
+  display:flex;
+  justify-content:space-between;
+  color:#666;
+  font-size:9px;
+  letter-spacing:2px;
+}
+
+@media(max-width:700px){
+
+  nav{
+    padding:0 6%;
+  }
+
+  .navlinks{
+    display:none;
+  }
+
+  .hero{
+    min-height:850px;
+    padding:90px 6%;
+    align-items:flex-start;
+  }
+
+  .hero h1{
+    font-size:68px;
+    letter-spacing:-5px;
+  }
+
+  .hero-art{
+    width:80%;
+    height:45%;
+    right:10%;
+    bottom:5%;
+  }
+
+  .collection{
+    padding:90px 6%;
+  }
+
+  .collection-head{
+    display:block;
+  }
+
+  .collection-head p{
+    margin-top:25px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .image{
+    height:400px;
+  }
+
+  .story{
+    min-height:650px;
+    padding:90px 6%;
+  }
+
+  footer{
+    display:block;
+    line-height:3;
+    padding:35px 6%;
+  }
+
+}
+
+</style>
+
+</body>
+</html>
