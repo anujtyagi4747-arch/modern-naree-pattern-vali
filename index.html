@@ -1102,5 +1102,180 @@ function closeOffer(){
 }
 
 </style>
+  <!-- PRODUCT QUICK VIEW -->
+
+<div id="quickView">
+
+  <div class="quick-box">
+
+    <button class="quick-close" onclick="closeQuick()">×</button>
+
+    <div class="quick-visual"></div>
+
+    <div class="quick-details">
+
+      <span>MODERN NAREE / 2026 EDIT</span>
+
+      <h2 id="quickName">Ivory Heritage</h2>
+
+      <p id="quickBrand">Modern Naree</p>
+
+      <strong id="quickPrice">₹2,790</strong>
+
+      <p class="quick-description">
+        Contemporary Indian fashion with a refined silhouette,
+        premium detailing and timeless design language.
+      </p>
+
+      <button class="add-cart">
+        ADD TO CART →
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<style>
+
+#quickView{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.82);
+  backdrop-filter:blur(10px);
+  z-index:10001;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.quick-box{
+  width:min(850px,100%);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  background:#111;
+  border:1px solid #3d3833;
+  position:relative;
+  box-shadow:0 30px 100px #000;
+}
+
+.quick-visual{
+  min-height:500px;
+  background:
+    linear-gradient(135deg,#62574d,#d7ccc0 50%,#25211e);
+}
+
+.quick-details{
+  padding:60px 45px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.quick-details span{
+  font-size:8px;
+  letter-spacing:3px;
+  color:#85786d;
+}
+
+.quick-details h2{
+  font-family:Georgia,serif;
+  font-size:42px;
+  font-weight:400;
+  margin:20px 0 8px;
+}
+
+#quickBrand{
+  color:#777;
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+#quickPrice{
+  margin-top:25px;
+  font-size:18px;
+  font-weight:400;
+}
+
+.quick-description{
+  color:#888;
+  font-size:12px;
+  line-height:1.9;
+  margin:25px 0;
+}
+
+.quick-close{
+  position:absolute;
+  right:18px;
+  top:15px;
+  z-index:5;
+  background:none;
+  border:0;
+  color:#aaa;
+  font-size:28px;
+  cursor:pointer;
+}
+
+.add-cart{
+  padding:16px;
+  border:1px solid #777;
+  background:#eee;
+  color:#111;
+  cursor:pointer;
+  font-size:9px;
+  letter-spacing:3px;
+}
+
+.add-cart:hover{
+  background:#111;
+  color:#eee;
+}
+
+@media(max-width:650px){
+
+  .quick-box{
+    grid-template-columns:1fr;
+    max-height:90vh;
+    overflow:auto;
+  }
+
+  .quick-visual{
+    min-height:280px;
+  }
+
+  .quick-details{
+    padding:35px 25px;
+  }
+
+  .quick-details h2{
+    font-size:32px;
+  }
+
+}
+
+</style>
+
+<script>
+
+function openQuick(name, brand, price){
+
+  document.getElementById("quickName").innerText=name;
+  document.getElementById("quickBrand").innerText=brand;
+  document.getElementById("quickPrice").innerText=price;
+
+  document.getElementById("quickView").style.display="flex";
+
+}
+
+function closeQuick(){
+
+  document.getElementById("quickView").style.display="none";
+
+}
+
+</script>
 </body>
 </html>
