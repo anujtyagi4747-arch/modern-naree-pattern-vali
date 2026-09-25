@@ -1855,5 +1855,38 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
       </script>
+      <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  document.querySelectorAll(".product-card").forEach(function (product) {
+
+    product.style.cursor = "pointer";
+
+    product.addEventListener("click", function (event) {
+
+      /* Wishlist ko product click se alag rakho */
+      if (event.target.closest(".wishlist")) {
+        return;
+      }
+
+      const name =
+        product.querySelector("h3")?.innerText?.trim() || "Product";
+
+      const brand =
+        product.querySelector("p")?.innerText?.trim() || "Collection";
+
+      const price =
+        product.querySelector("strong")?.innerText?.trim() || "₹0";
+
+      if (typeof openQuick === "function") {
+        openQuick(name, brand, price);
+      }
+
+    });
+
+  });
+
+});
+      </script>
 </body>
 </html>
