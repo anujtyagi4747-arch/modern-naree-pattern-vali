@@ -825,5 +825,282 @@ function closeOffer(){
 }
 
 </script>
+  <!-- PREMIUM COLLECTION -->
+
+<section class="premium-products" id="shop">
+
+  <div class="products-heading">
+    <div>
+      <span>THE EDIT / 2026</span>
+      <h2>New Collection</h2>
+    </div>
+
+    <p>
+      A curated selection of contemporary Indian
+      silhouettes, textures and timeless patterns.
+    </p>
+  </div>
+
+  <div class="product-grid">
+
+    <div class="product-card">
+      <div class="product-image image-one">
+        <span class="product-label">NEW</span>
+        <button class="wishlist">♡</button>
+      </div>
+
+      <div class="product-info">
+        <div>
+          <h3>Ivory Heritage</h3>
+          <p>Modern Naree</p>
+        </div>
+        <strong>₹2,790</strong>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image image-two">
+        <span class="product-label">EDIT</span>
+        <button class="wishlist">♡</button>
+      </div>
+
+      <div class="product-info">
+        <div>
+          <h3>Earth Pattern</h3>
+          <p>Pattern Vali</p>
+        </div>
+        <strong>₹3,190</strong>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image image-three">
+        <span class="product-label">NEW</span>
+        <button class="wishlist">♡</button>
+      </div>
+
+      <div class="product-info">
+        <div>
+          <h3>Midnight Weave</h3>
+          <p>Modern Naree</p>
+        </div>
+        <strong>₹3,490</strong>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image image-four">
+        <span class="product-label">LIMITED</span>
+        <button class="wishlist">♡</button>
+      </div>
+
+      <div class="product-info">
+        <div>
+          <h3>Signature Print</h3>
+          <p>Pattern Vali</p>
+        </div>
+        <strong>₹3,890</strong>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+
+.premium-products{
+  padding:120px 6vw;
+  background:#0b0b0b;
+  color:#eee;
+}
+
+.products-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:40px;
+  margin-bottom:55px;
+}
+
+.products-heading span{
+  font-size:9px;
+  letter-spacing:4px;
+  color:#81766d;
+}
+
+.products-heading h2{
+  margin:15px 0 0;
+  font-family:Georgia,serif;
+  font-size:clamp(40px,6vw,75px);
+  font-weight:400;
+}
+
+.products-heading p{
+  max-width:330px;
+  color:#888;
+  font-size:12px;
+  line-height:1.8;
+}
+
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.product-image{
+  position:relative;
+  height:430px;
+  overflow:hidden;
+  background:#201c19;
+}
+
+.image-one{
+  background:
+    linear-gradient(135deg,#6d6259,#d8cec0 50%,#292521);
+}
+
+.image-two{
+  background:
+    repeating-linear-gradient(
+      45deg,
+      #2c2825 0,
+      #2c2825 25px,
+      #62564b 25px,
+      #62564b 50px
+    );
+}
+
+.image-three{
+  background:
+    radial-gradient(circle at 30% 30%,#777 0,transparent 25%),
+    linear-gradient(135deg,#111,#49413b,#171513);
+}
+
+.image-four{
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      #403a35 0,
+      #403a35 18px,
+      #8b7b6b 18px,
+      #8b7b6b 20px
+    );
+}
+
+.product-image::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to bottom,
+    transparent 55%,
+    rgba(0,0,0,.55)
+  );
+  pointer-events:none;
+}
+
+.product-label{
+  position:absolute;
+  left:15px;
+  top:15px;
+  z-index:2;
+  padding:7px 10px;
+  border:1px solid rgba(255,255,255,.35);
+  font-size:8px;
+  letter-spacing:2px;
+}
+
+.wishlist{
+  position:absolute;
+  right:15px;
+  top:12px;
+  z-index:3;
+  border:0;
+  background:rgba(0,0,0,.25);
+  color:#fff;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  font-size:21px;
+  cursor:pointer;
+}
+
+.wishlist:hover{
+  background:#eee;
+  color:#111;
+}
+
+.product-info{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding:18px 2px;
+}
+
+.product-info h3{
+  margin:0 0 7px;
+  font-family:Georgia,serif;
+  font-size:18px;
+  font-weight:400;
+}
+
+.product-info p{
+  margin:0;
+  font-size:9px;
+  letter-spacing:2px;
+  color:#777;
+  text-transform:uppercase;
+}
+
+.product-info strong{
+  font-size:12px;
+  font-weight:400;
+  white-space:nowrap;
+}
+
+@media(max-width:800px){
+
+  .premium-products{
+    padding:80px 5vw;
+  }
+
+  .products-heading{
+    display:block;
+  }
+
+  .products-heading p{
+    margin-top:20px;
+  }
+
+  .product-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+
+  .product-image{
+    height:300px;
+  }
+
+}
+
+@media(max-width:500px){
+
+  .product-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .product-image{
+    height:250px;
+  }
+
+  .product-info h3{
+    font-size:14px;
+  }
+
+}
+
+</style>
 </body>
 </html>
