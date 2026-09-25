@@ -476,6 +476,366 @@ padding:35px 6%;
 }
 
 </style>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
 
+  /* =========================
+     UNIVERSAL PRODUCT SYSTEM
+  ========================= */
+
+  let shopCart = [];
+
+  /* PRODUCT CLICK */
+
+  const products = document.querySelectorAll(
+    ".product-card, .product-item, .product, .product-box, article"
+  );
+
+  products.forEach(function(card){
+
+    const title = card.querySelector("h1,h2,h3,h4,.product-title,.title");
+    const price = card.querySelector("strong,.price,.product-price");
+
+    if(!title || !price) return;
+
+    card.style.cursor = "pointer";
+
+    card.addEventListener("click", function(e){
+
+      if(e.target.closest(".wishlist")) return;
+      if(e.target.closest("button.add-cart")) return;
+
+      let name = title.innerText.trim();
+      let amount = price.innerText.trim();
+
+      showProduct(name, amount);
+
+    });
+
+  });
+
+
+  /* QUICK VIEW */
+
+  window.showProduct = function(name, price){
+
+    let old = document.getElementById("universalQuick");
+
+    if(old) old.remove();
+
+    let box = document.createElement("div");
+
+    box.id = "universalQuick";
+
+    box.innerHTML = `
+      <div class="universal-overlay">
+        <div class="universal-box">
+
+          <button class="universal-close"
+            onclick="document.getElementById('universalQuick').remove()">×</button>
+
+          <span>COLLECTION · 2026</span>
+
+          <h2>${name}</h2>
+
+          <strong>${price}</strong>
+
+          <p>
+            Premium contemporary Indian fashion,
+            curated with refined details and modern design.
+          </p>
+
+          <button class="universal-add"
+            onclick="universalAdd('${name}','${price}')">
+            ADD TO CART →
+          </button>
+
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(box);
+
+  };
+
+
+  /* ADD TO CART */
+
+  window.universalAdd = function(name,price){
+
+    shopCart.push({
+      name:name,
+      price:price
+    });
+
+    updateCart();
+
+    document.getElementById("universalQuick")?.remove();
+
+    openUniversalCart();
+
+  };
+
+
+  /* CART */
+
+  window.updateCart = function(){
+
+    let count = document.getElementById("universalCartCount");
+
+    if(count){
+      count.innerText = shopCart.length;
+    }
+
+  };
+
+
+  window.openUniversalCart = function(){
+
+    let old = document.getElementById("universalCart");
+
+    if(old) old.remove();
+
+    let html = "";
+
+    if(shopCart.length === 0){
+
+      html = `
+        <p style="color:#aaa">Your bag is empty.</p>
+      `;
+
+    }else{
+
+      shopCart.forEach(function(item){
+
+        html += `
+          <div style="
+            display:flex;
+            justify-content:space-between;
+            gap:20px;
+            padding:15px 0;
+            border-bottom:1px solid #333;
+          ">
+            <span>${item.name}</span>
+            <strong>${item.price}</strong>
+          </div>
+        `;
+
+      });
+
+    }
+
+    let cart = document.createElement("div");
+
+    cart.id = "universalCart";
+
+    cart.innerHTML = `
+      <div class="universal-cart-overlay">
+
+        <div class="universal-cart-box">
+
+          <button class="universal-close"
+            onclick="document.getElementById('universalCart').remove()">×</button>
+
+          <h2>YOUR BAG</h2>
+
+          <div>${html}</div>
+
+          <button class="universal-add"
+            onclick="document.getElementById('universalCart').remove()">
+            CONTINUE SHOPPING
+          </button>
+
+        </div>
+
+      </div>
+    `;
+
+    document.body.appendChild(cart);
+
+  };
+
+
+  /* FLOATING BAG */
+
+  let bag = document.createElement("button");
+
+  bag.id = "universalBag";
+
+  bag.innerHTML = `🛍️ <span id="universalCartCount">0</span>`;
+
+  bag.onclick = openUniversalCart;
+
+  document.body.appendChild(bag);
+
+
+  /* =========================
+     STYLING
+  ========================= */
+
+  let style = document.createElement("style");
+
+  style.innerHTML = `
+
+    #universalBag{
+      position:fixed;
+      right:20px;
+      bottom:25px;
+      z-index:99999;
+
+      width:55px;
+      height:55px;
+
+      border-radius:50%;
+      border:1px solid #777;
+
+      background:#eee;
+      color:#111;
+
+      font-size:20px;
+      cursor:pointer;
+
+      box-shadow:0 10px 30px rgba(0,0,0,.5);
+    }
+
+    #universalCartCount{
+      position:absolute;
+      right:-5px;
+      top:-5px;
+
+      min-width:20px;
+      height:20px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      border-radius:50%;
+
+      background:#111;
+      color:white;
+
+      font-size:10px;
+    }
+
+    .universal-overlay,
+    .universal-cart-overlay{
+
+      position:fixed;
+      inset:0;
+
+      background:rgba(0,0,0,.75);
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      z-index:100000;
+
+      padding:20px;
+
+    }
+
+    .universal-box,
+    .universal-cart-box{
+
+      width:min(450px,100%);
+
+      background:#111;
+
+      color:#eee;
+
+      border:1px solid #444;
+
+      padding:35px;
+
+      position:relative;
+
+      box-shadow:0 20px 70px rgba(0,0,0,.7);
+
+    }
+
+    .universal-box span{
+
+      font-size:9px;
+
+      letter-spacing:3px;
+
+      color:#999;
+
+    }
+
+    .universal-box h2{
+
+      font-size:32px;
+
+      margin:15px 0;
+
+    }
+
+    .universal-box strong{
+
+      font-size:20px;
+
+    }
+
+    .universal-box p{
+
+      color:#aaa;
+
+      line-height:1.7;
+
+      font-size:13px;
+
+      margin:20px 0;
+
+    }
+
+    .universal-close{
+
+      position:absolute;
+
+      right:15px;
+
+      top:12px;
+
+      background:none;
+
+      border:0;
+
+      color:white;
+
+      font-size:28px;
+
+      cursor:pointer;
+
+    }
+
+    .universal-add{
+
+      width:100%;
+
+      padding:15px;
+
+      border:1px solid #777;
+
+      background:#eee;
+
+      color:#111;
+
+      cursor:pointer;
+
+      font-size:10px;
+
+      letter-spacing:2px;
+
+    }
+
+  `;
+
+  document.head.appendChild(style);
+
+});
+    </script>
 </body>
 </html>
