@@ -1718,5 +1718,117 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
   </script>
+      <!-- TWO BRAND SECTIONS -->
+
+<section id="modern" class="brand-section">
+  <div class="brand-watermark">MODERN NAREE</div>
+
+  <div class="brand-content">
+    <span>THE WOMEN'S EDIT · 2026</span>
+    <h2>MODERN NAREE</h2>
+    <p>
+      Contemporary Indian fashion with refined silhouettes,
+      premium details and a modern feminine identity.
+    </p>
+
+    <a href="modern-naree.html" class="brand-btn">
+      EXPLORE MODERN NAREE →
+    </a>
+  </div>
+</section>
+
+
+<section id="pattern" class="brand-section pattern-brand">
+  <div class="brand-watermark">PATTERN VALI</div>
+
+  <div class="brand-content">
+    <span>PRINT · PATTERN · CULTURE · 2026</span>
+    <h2>PATTERN VALI</h2>
+    <p>
+      Statement prints, expressive patterns and contemporary
+      Indian designs made for everyday style.
+    </p>
+
+    <a href="pattern-vali.html" class="brand-btn">
+      EXPLORE PATTERN VALI →
+    </a>
+  </div>
+</section>
+
+
+<style>
+
+.brand-section{
+  position:relative;
+  min-height:70vh;
+  padding:100px 7%;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  background:#0c0c0c;
+  border-top:1px solid #292929;
+}
+
+.pattern-brand{
+  background:#141414;
+}
+
+.brand-watermark{
+  position:absolute;
+  left:2%;
+  bottom:-20px;
+  font-size:clamp(70px,14vw,190px);
+  font-weight:900;
+  letter-spacing:-8px;
+  color:rgba(255,255,255,.035);
+  white-space:nowrap;
+  pointer-events:none;
+}
+
+.brand-content{
+  position:relative;
+  z-index:2;
+  max-width:620px;
+}
+
+.brand-content span{
+  font-size:10px;
+  letter-spacing:4px;
+  color:#aaa;
+}
+
+.brand-content h2{
+  margin:18px 0;
+  font-size:clamp(42px,8vw,92px);
+  line-height:.9;
+  letter-spacing:-3px;
+  color:#f1eee8;
+}
+
+.brand-content p{
+  max-width:500px;
+  color:#aaa;
+  font-size:14px;
+  line-height:1.8;
+  margin-bottom:30px;
+}
+
+.brand-btn{
+  display:inline-block;
+  padding:15px 22px;
+  border:1px solid #777;
+  color:#eee;
+  text-decoration:none;
+  font-size:10px;
+  letter-spacing:2px;
+  transition:.3s;
+}
+
+.brand-btn:hover{
+  background:#eee;
+  color:#111;
+}
+
+</style>
 </body>
 </html>
