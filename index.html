@@ -1855,5 +1855,390 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
       </script>
+      <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  /* ================================
+     UNIVERSAL SITE ACTIVATOR
+  ================================= */
+
+  /* ALL PRODUCT CARDS */
+  document.querySelectorAll(
+    ".product-card, .product-item, .product-box, .product"
+  ).forEach(function(card){
+
+    card.style.cursor = "pointer";
+
+    card.addEventListener("click", function(e){
+
+      /* wishlist ko alag rakho */
+      if(e.target.closest(".wishlist")) return;
+
+      let name =
+        card.querySelector("h1,h2,h3,h4")?.innerText ||
+        "Fashion Product";
+
+      let price =
+        card.querySelector("strong,.price,.product-price")?.innerText ||
+        "₹0";
+
+      let brand =
+        card.querySelector("p")?.innerText ||
+        "Collection";
+
+      openUniversalProduct(name,brand,price);
+
+    });
+
+  });
+
+
+  /* UNIVERSAL PRODUCT POPUP */
+
+  window.openUniversalProduct = function(name,brand,price){
+
+    let old = document.getElementById("universalProduct");
+
+    if(old) old.remove();
+
+    let popup = document.createElement("div");
+
+    popup.id = "universalProduct";
+
+    popup.innerHTML = `
+
+      <div class="universal-bg">
+
+        <div class="universal-product-box">
+
+          <button class="universal-x"
+          onclick="document.getElementById('universalProduct').remove()">
+          ×
+          </button>
+
+          <small>${brand}</small>
+
+          <h2>${name}</h2>
+
+          <h3>${price}</h3>
+
+          <p>
+          Premium fashion collection with contemporary
+          Indian styling and refined detailing.
+          </p>
+
+          <button class="universal-cart-btn"
+          onclick="universalAddCart('${name}','${price}')">
+          ADD TO CART →
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+    document.body.appendChild(popup);
+
+  };
+
+
+  /* CART */
+
+  window.universalCart = [];
+
+
+  window.universalAddCart = function(name,price){
+
+    universalCart.push({
+      name:name,
+      price:price
+    });
+
+    updateUniversalBag();
+
+    document.getElementById("universalProduct")?.remove();
+
+    alert(name + " added to cart");
+
+  };
+
+
+  /* BAG */
+
+  let bag = document.createElement("button");
+
+  bag.id = "masterBag";
+
+  bag.innerHTML = `
+    🛍️
+    <span id="masterBagCount">0</span>
+  `;
+
+  bag.onclick = function(){
+
+    let list = "";
+
+    if(universalCart.length === 0){
+
+      list = "<p>Your bag is empty.</p>";
+
+    }else{
+
+      universalCart.forEach(function(item){
+
+        list += `
+          <div style="
+          padding:15px 0;
+          border-bottom:1px solid #444;
+          display:flex;
+          justify-content:space-between;
+          ">
+            <span>${item.name}</span>
+            <strong>${item.price}</strong>
+          </div>
+        `;
+
+      });
+
+    }
+
+    let box = document.createElement("div");
+
+    box.id = "masterCartPopup";
+
+    box.innerHTML = `
+
+      <div class="universal-bg">
+
+        <div class="universal-product-box">
+
+          <button class="universal-x"
+          onclick="this.parentElement.parentElement.parentElement.remove()">
+          ×
+          </button>
+
+          <h2>YOUR BAG</h2>
+
+          ${list}
+
+        </div>
+
+      </div>
+
+    `;
+
+    document.body.appendChild(box);
+
+  };
+
+  document.body.appendChild(bag);
+
+
+  function updateUniversalBag(){
+
+    document.getElementById("masterBagCount").innerText =
+      universalCart.length;
+
+  }
+
+
+  /* WISHLIST */
+
+  document.querySelectorAll(".wishlist").forEach(function(btn){
+
+    btn.addEventListener("click",function(e){
+
+      e.stopPropagation();
+
+      if(btn.innerText.trim() === "♡"){
+
+        btn.innerText = "♥";
+
+      }else{
+
+        btn.innerText = "♡";
+
+      }
+
+    });
+
+  });
+
+
+  /* ================================
+     STYLE
+  ================================= */
+
+  let style = document.createElement("style");
+
+  style.innerHTML = `
+
+    #masterBag{
+
+      position:fixed;
+      right:20px;
+      bottom:25px;
+
+      width:58px;
+      height:58px;
+
+      border-radius:50%;
+
+      border:1px solid #777;
+
+      background:#eee;
+      color:#111;
+
+      font-size:21px;
+
+      cursor:pointer;
+
+      z-index:999999;
+
+    }
+
+    #masterBagCount{
+
+      position:absolute;
+
+      right:-4px;
+      top:-4px;
+
+      min-width:20px;
+      height:20px;
+
+      border-radius:50%;
+
+      background:#111;
+      color:#fff;
+
+      display:flex;
+
+      align-items:center;
+      justify-content:center;
+
+      font-size:10px;
+
+    }
+
+    .universal-bg{
+
+      position:fixed;
+
+      inset:0;
+
+      background:rgba(0,0,0,.78);
+
+      display:flex;
+
+      align-items:center;
+      justify-content:center;
+
+      padding:20px;
+
+      z-index:999998;
+
+    }
+
+    .universal-product-box{
+
+      position:relative;
+
+      width:min(450px,100%);
+
+      max-height:80vh;
+
+      overflow:auto;
+
+      padding:35px;
+
+      background:#111;
+
+      color:#fff;
+
+      border:1px solid #555;
+
+      box-shadow:0 20px 80px rgba(0,0,0,.8);
+
+    }
+
+    .universal-product-box small{
+
+      color:#aaa;
+
+      letter-spacing:3px;
+
+    }
+
+    .universal-product-box h2{
+
+      font-size:32px;
+
+      margin:15px 0;
+
+    }
+
+    .universal-product-box h3{
+
+      font-size:22px;
+
+    }
+
+    .universal-product-box p{
+
+      color:#aaa;
+
+      line-height:1.7;
+
+    }
+
+    .universal-x{
+
+      position:absolute;
+
+      right:15px;
+      top:10px;
+
+      background:none;
+
+      border:0;
+
+      color:#fff;
+
+      font-size:30px;
+
+      cursor:pointer;
+
+    }
+
+    .universal-cart-btn{
+
+      width:100%;
+
+      padding:16px;
+
+      margin-top:15px;
+
+      border:0;
+
+      background:#eee;
+
+      color:#111;
+
+      cursor:pointer;
+
+      font-weight:bold;
+
+      letter-spacing:2px;
+
+    }
+
+  `;
+
+  document.head.appendChild(style);
+
+});
+      </script>
 </body>
 </html>
