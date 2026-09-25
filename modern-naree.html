@@ -1023,5 +1023,192 @@ document.body.appendChild(b);
 
 });
   </script>
+  <script>
+document.addEventListener("click", function(e){
+
+  let el = e.target;
+
+  /* Product ko automatically find karo */
+  for(let i=0; i<7 && el; i++, el=el.parentElement){
+
+    let text = el.innerText || "";
+
+    /* Jis section/card me ₹ price hai usko product maan lo */
+    if(text.includes("₹") && text.length < 500){
+
+      let lines = text
+        .split("\n")
+        .map(x=>x.trim())
+        .filter(x=>x);
+
+      let price = lines.find(x=>x.includes("₹"));
+
+      if(!price) return;
+
+      let name = lines.find(x =>
+        !x.includes("₹") &&
+        x.length > 2 &&
+        x.length < 80 &&
+        !x.toUpperCase().includes("ADD TO") &&
+        !x.toUpperCase().includes("CART")
+      );
+
+      if(!name) name = "Fashion Product";
+
+      /* Existing buttons ko ignore */
+      if(
+        e.target.tagName==="BUTTON" ||
+        e.target.tagName==="A" ||
+        e.target.closest("button")
+      ) return;
+
+      showFashionProduct(name,price);
+      return;
+    }
+  }
+
+});
+
+
+/* PRODUCT POPUP */
+
+function showFashionProduct(name,price){
+
+  document.getElementById("simpleProductPopup")?.remove();
+
+  let box=document.createElement("div");
+
+  box.id="simpleProductPopup";
+
+  box.innerHTML=`
+  
+  <div style="
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.85);
+    z-index:999999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+  ">
+
+    <div style="
+      width:min(420px,100%);
+      background:#111;
+      color:white;
+      padding:30px;
+      position:relative;
+      border:1px solid #555;
+    ">
+
+      <button onclick="document.getElementById('simpleProductPopup').remove()"
+      style="
+        position:absolute;
+        right:12px;
+        top:8px;
+        background:none;
+        border:0;
+        color:white;
+        font-size:28px;
+      ">×</button>
+
+      <small style="color:#999;letter-spacing:3px">
+        COLLECTION · 2026
+      </small>
+
+      <h2 style="margin:18px 0">${name}</h2>
+
+      <h3>${price}</h3>
+
+      <button onclick="simpleAddCart('${name}','${price}')"
+      style="
+        width:100%;
+        padding:16px;
+        margin-top:20px;
+        background:white;
+        color:#111;
+        border:0;
+        font-weight:bold;
+        cursor:pointer;
+      ">
+        ADD TO CART →
+      </button>
+
+    </div>
+
+  </div>
+  
+  `;
+
+  document.body.appendChild(box);
+}
+
+
+/* CART */
+
+let simpleCart=[];
+
+function simpleAddCart(name,price){
+
+  simpleCart.push({
+    name:name,
+    price:price
+  });
+
+  document.getElementById("simpleBagCount").innerText =
+    simpleCart.length;
+
+  document.getElementById("simpleProductPopup")?.remove();
+
+  alert(name+" added to cart ✓");
+}
+
+
+/* BAG */
+
+let simpleBag=document.createElement("button");
+
+simpleBag.innerHTML=`
+🛍️ <span id="simpleBagCount">0</span>
+`;
+
+simpleBag.style=`
+position:fixed;
+right:20px;
+bottom:20px;
+z-index:999998;
+width:55px;
+height:55px;
+border-radius:50%;
+border:1px solid #777;
+background:#eee;
+color:#111;
+font-size:20px;
+`;
+
+simpleBag.onclick=function(){
+
+  if(simpleCart.length===0){
+
+    alert("YOUR BAG\n\nYour bag is empty.");
+
+    return;
+  }
+
+  let list="YOUR BAG\n\n";
+
+  simpleCart.forEach(function(item){
+
+    list += item.name+" — "+item.price+"\n";
+
+  });
+
+  alert(list);
+
+};
+
+document.body.appendChild(simpleBag);
+      </script>
 </body>
 </html>
