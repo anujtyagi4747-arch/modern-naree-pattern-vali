@@ -1830,5 +1830,30 @@ document.addEventListener("DOMContentLoaded", function(){
 }
 
 </style>
+      <script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  document.querySelectorAll(".product-card").forEach(function(card){
+
+    card.style.cursor = "pointer";
+
+    card.addEventListener("click", function(e){
+
+      if(e.target.closest(".wishlist")) return;
+
+      const name = card.querySelector("h3")?.innerText || "Product";
+      const brand = card.querySelector("p")?.innerText || "Collection";
+      const price = card.querySelector("strong")?.innerText || "₹0";
+
+      if(typeof openQuick === "function"){
+        openQuick(name, brand, price);
+      }
+
+    });
+
+  });
+
+});
+      </script>
 </body>
 </html>
