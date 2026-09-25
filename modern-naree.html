@@ -903,5 +903,125 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
     </script>
+  <script>
+document.addEventListener("DOMContentLoaded",()=>{
+
+let bag=[];
+
+/* PRODUCT CLICK */
+document.querySelectorAll(
+".product-card,.product-item,.product-box,.product,article"
+).forEach(p=>{
+
+p.style.cursor="pointer";
+
+p.onclick=e=>{
+
+if(e.target.closest("button"))return;
+
+let n=p.querySelector("h1,h2,h3,h4");
+let r=p.querySelector("strong,.price,.product-price");
+
+if(!n)return;
+
+show(n.innerText,r?r.innerText:"₹0");
+};
+
+});
+
+
+/* POPUP */
+window.show=(name,price)=>{
+
+let x=document.createElement("div");
+
+x.style=`
+position:fixed;inset:0;background:#000c;
+z-index:999999;
+display:flex;align-items:center;justify-content:center;
+padding:20px`;
+
+x.innerHTML=`
+<div style="
+background:#111;color:white;padding:30px;
+width:min(400px,100%);position:relative;
+border:1px solid #555">
+
+<button onclick="this.parentElement.parentElement.remove()"
+style="position:absolute;right:12px;top:8px;
+background:none;border:0;color:white;
+font-size:28px">×</button>
+
+<small>COLLECTION · 2026</small>
+
+<h2>${name}</h2>
+
+<h3>${price}</h3>
+
+<p style="color:#aaa">
+Premium contemporary Indian fashion with
+refined detailing and modern design.
+</p>
+
+<button onclick="add('${name}','${price}',this)"
+style="width:100%;padding:15px;
+background:white;color:black;border:0;
+font-weight:bold">
+ADD TO CART →
+</button>
+
+</div>`;
+
+document.body.appendChild(x);
+};
+
+
+/* CART */
+window.add=(name,price,btn)=>{
+
+bag.push({name,price});
+
+document.querySelector("#bagCount").innerText=bag.length;
+
+btn.closest("[style*='background:#111']").parentElement.remove();
+
+alert(name+" added to bag ✓");
+
+};
+
+
+/* BAG BUTTON */
+let b=document.createElement("button");
+
+b.id="siteBag";
+
+b.innerHTML=`🛍️ <span id="bagCount">0</span>`;
+
+b.onclick=()=>{
+
+let text=bag.length
+?bag.map(x=>x.name+" — "+x.price).join("\\n")
+:"Your bag is empty.";
+
+alert("YOUR BAG\\n\\n"+text);
+
+};
+
+b.style=`
+position:fixed;
+right:20px;
+bottom:20px;
+z-index:999998;
+width:55px;height:55px;
+border-radius:50%;
+border:1px solid #777;
+background:#eee;
+font-size:20px;
+cursor:pointer`;
+
+document.body.appendChild(b);
+
+});
+  </script>
 </body>
 </html>
