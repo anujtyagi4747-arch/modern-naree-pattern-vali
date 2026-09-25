@@ -1483,6 +1483,10 @@ function addToCart(name,price){
     price:price
   });
 
+  document.querySelectorAll("#cartCount").forEach(function(el){
+    el.innerText = cart.length;
+  });
+
   renderCart();
   openCart();
 
