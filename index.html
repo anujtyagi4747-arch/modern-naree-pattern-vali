@@ -592,6 +592,113 @@ footer{
   <span>MODERN NAREE × PATTERN VALI</span>
   <span>© 2026</span>
 </footer>
+<!-- PREMIUM INTRO -->
 
+<div id="intro">
+
+  <div class="intro-logo">
+    MODERN NAREE
+    <span>×</span>
+    PATTERN VALI
+  </div>
+
+  <div class="intro-line"></div>
+
+  <div class="intro-small">
+    CONTEMPORARY INDIAN FASHION / 2026
+  </div>
+
+  <button onclick="enterSite()">
+    ENTER COLLECTION →
+  </button>
+
+</div>
+
+<style>
+
+#intro{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:#090909;
+  color:#f3eee6;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  animation:introIn 1s ease;
+}
+
+.intro-logo{
+  font-family:Georgia,serif;
+  font-size:clamp(32px,7vw,80px);
+  letter-spacing:-2px;
+}
+
+.intro-logo span{
+  display:block;
+  font-family:Arial,sans-serif;
+  font-size:18px;
+  margin:15px;
+  color:#8d8175;
+}
+
+.intro-line{
+  width:70px;
+  height:1px;
+  background:#777;
+  margin:35px 0 20px;
+}
+
+.intro-small{
+  font-size:9px;
+  letter-spacing:4px;
+  color:#777;
+}
+
+#intro button{
+  margin-top:40px;
+  padding:15px 25px;
+  background:transparent;
+  border:1px solid #666;
+  color:#eee;
+  font-size:10px;
+  letter-spacing:3px;
+  cursor:pointer;
+}
+
+#intro button:hover{
+  background:#f3eee6;
+  color:#090909;
+}
+
+@keyframes introIn{
+  from{
+    opacity:0;
+  }
+  to{
+    opacity:1;
+  }
+}
+
+</style>
+
+<script>
+
+function enterSite(){
+
+  const intro=document.getElementById("intro");
+
+  intro.style.opacity="0";
+  intro.style.transition="opacity .7s ease";
+
+  setTimeout(()=>{
+    intro.style.display="none";
+  },700);
+
+}
+
+</script>
 </body>
 </html>
