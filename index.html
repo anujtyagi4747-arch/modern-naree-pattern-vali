@@ -1127,8 +1127,11 @@ function closeOffer(){
         premium detailing and timeless design language.
       </p>
 
-      <button class="add-cart">
-        ADD TO CART →
+      <button class="add-cart" onclick="addToCart(
+  document.getElementById('quickName').innerText,
+  document.getElementById('quickPrice').innerText
+); closeQuick();">
+  ADD TO CART →
       </button>
 
     </div>
