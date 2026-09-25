@@ -1615,5 +1615,22 @@ function closeCart(){
 }
 
 </style>
+  <script>
+document.querySelectorAll(".product-card").forEach(function(card){
+
+  card.style.cursor = "pointer";
+
+  card.addEventListener("click", function(){
+
+    const name = card.querySelector("h3")?.innerText || "Product";
+    const brand = card.querySelector("p")?.innerText || "Modern Naree";
+    const price = card.querySelector("strong")?.innerText || "₹0";
+
+    openQuick(name, brand, price);
+
+  });
+
+});
+  </script>
 </body>
 </html>
